@@ -86,7 +86,6 @@ EnemyUpdate:
 	else
 		waveTimer# = timer()
 	endif
-	
 return
 
 function CreateEnemy(color as Color, sprite)

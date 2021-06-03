@@ -33,6 +33,7 @@ gosub ColorsInit
 gosub SceneManagerInit
 
 do
+	//print(ScreenFPS)
 	m.x = GetPointerX()
 	m.y = GetPointerY()
 	gosub SceneManagerUpdate

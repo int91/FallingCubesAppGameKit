@@ -6,5 +6,6 @@ SpritesInit:
 	placeHolderBoxSprite = LoadImage("sprites\EntityBox.png")
 	placeHolderOutlineSprite = LoadImage("sprites\PlaceHolderOutline.png")
 	placeHolderBulletSprite = LoadImage("sprites\PlaceHolderBullet.png")
+	placeHolderAmmoBoxSprite = LoadImage("sprites\PlaceHolderAmmoBox.png")
 
 return

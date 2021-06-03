@@ -1,5 +1,6 @@
 
 #include "entity.agc"
+#include "bullet.agc"
 
 PlayerInit:
 	player as entity
@@ -26,6 +27,7 @@ PlayerInit:
 	shootTimer# = timer()
 	timeSurvived# = timer()
 	
+	ammo = 3
 	shotsFired = 0
 	shotsHit = 0
 	score = 0
@@ -78,27 +80,12 @@ PlayerUpdate:
 		moveSpeed = 100
 		canDash = 0
 	endif
-	if (GetRawKeyPressed(KEY_SPACE) and canShoot = 1)
-		CreateBullet(entities[playerID], purple, placeHolderBulletSprite)
+	if (GetRawKeyPressed(KEY_SPACE) and canShoot = 1 and ammo > 0)
+		entities.insert(CreateBullet(entities[playerID], white, placeHolderBulletSprite))
 		shotsFired = shotsFired + 1
+		ammo = ammo - 1
 		canShoot = 0
 	endif
 	entities[playerID].x = entities[playerID].x + (moveX * moveSpeed)
 	entities[playerID].y = entities[playerID].y + (moveY * moveSpeed)
 return
-
-function CreateBullet(pla as entity, color as Color, sprite)
-	buL as entity
-	buL.sizeX = 8
-	buL.sizeY = 16
-	buL.x = pla.x + (pla.sizeX / 2) - (buL.sizeX / 2)
-	buL.y = pla.y - 8
-	buL.spawned = 1
-	buL.tag = "bullet"
-	buL.sprite = CreateSprite(sprite)
-	buL.color = color
-	entities.insert(buL)
-	buL.id = entities.length
-	SetSpritePosition(buL.sprite, buL.x, buL.y)
-	SetSpriteColor(buL.sprite, buL.color.r, buL.color.g, buL.color.b, 255)
-endfunction
