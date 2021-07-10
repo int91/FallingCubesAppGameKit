@@ -3,21 +3,17 @@
  
  Falling Cubes was written in BASIC using The Game Creator's "App Game Kit" framework.
  
- NOTE: Github says this project was written in ASSEMBLY. It was not written in ASSEMBLY, but since github doesn't have App Game Kit files in their language database it doesn't work and it just went with ASSEMBLY for whatever reason.
+ NOTE: Github says this project was written in ASSEMBLY. It was not written in ASSEMBLY, but since github doesn't have App Game Kit files in their language database it doesn't work and defaulted to ASSEMBLY.
  
- It was honestly a lot of fun to work with and I enjoyed making the game so here's the source.
- It kind of uses it's own ecs-similar code base. Note how I said "similar" because each object type has its own update function. That's pretty much it for the ecs part of it. I know very intriguing lol.
- 
- The object system works by using an array that stores a type, that being type entity. Then each object (player, enemy, etc.) is defined as an entity and fed into that array.
- Some player data is stored in global variables (to prevent the need to constantly type "player." or entities[player.Id].thisvar].)
+ Falling Cubes uses its own ecs-similar code base. The ecs-similar system is similar because each object type has its own update, create, and draw function(s).
 
- Basically to explain the game play it's just, enemy spawn, enemy fall, player moves to avoid enemies, when player contacts enemies, player dies.
+ The object system works by declaring an array that stores a type, entity. Then each object (player, enemy, etc.) is defined as an entity and fed into that array.
+ Variables such as PlayerLives, and PlayeID are stored in global variables to prevent re-typing "player." or entities[player.Id].thisvar].
+
+ In layman's terms the player dodges cubes that fall from the air and if the player gets hit by a cube too many times they die.
  
- Also this game has no deltaTime but it's super simple to implement, I just didn't implement it since I figured I'd be the only one playing the game anyway. So have fun.
+ Falling Cubes has no deltaTime but it is locked to 60fps to help prevent issues that occur from not having deltaTime.
  
- NOTE: In the source code there is two files with "buildPlaceholder" or something similar. These files ARE NOT part of the game. They were part of a building system I was making to learn BASIC and App Game Kit
+ NOTE: In the source code there are two files, buildplaceholder.agc and buildsystem.agc. These files ARE NOT part of the game. They were part of a building system that I was working on to help me learn BASIC and App Game Kit.
  
- This project was remade in:
- python3 (lost source)
- lua + love2D
- and I might make it in raylib with c++ later on
+ This project was remade with python3 (lost source), lua + love2D, and I might make it in raylib with c++ later on.
