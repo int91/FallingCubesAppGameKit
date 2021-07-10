@@ -10,7 +10,7 @@ windowSizeY = 768
 SetErrorMode(2)
 
 // set window properties
-SetWindowTitle( "Falling Cubes - Tech Demo" )
+SetWindowTitle( "Falling Cubes" )
 SetWindowSize( windowSizeX, windowSizeY, 0 )
 SetWindowAllowResize( 0 ) // allow the user to resize the window
 SetDisplayAspect( 16.0/39.0 )
@@ -33,6 +33,7 @@ gosub ColorsInit
 gosub SceneManagerInit
 
 do
+	//print(ScreenFPS)
 	m.x = GetPointerX()
 	m.y = GetPointerY()
 	gosub SceneManagerUpdate

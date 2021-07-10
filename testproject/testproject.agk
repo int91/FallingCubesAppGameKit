@@ -59,19 +59,9 @@ FILE_8=sprites.agc;-1
 FILE_9=scenemanager.agc;-1
 FILE_10=enemy.agc;-1
 FILE_11=bullet.agc;-1
+FILE_12=ammobox.agc;-1
 
 [files]
-FILE_NAME_0=0;main.agc;0;0
-FILE_NAME_1=0;colors.agc;0;3
-FILE_NAME_2=0;entity.agc;0;6
-FILE_NAME_3=0;buildplaceholder.agc;0;1
-FILE_NAME_4=0;utils.agc;0;10
-FILE_NAME_5=0;player.agc;0;7
-FILE_NAME_6=0;keys.agc;0;5
-FILE_NAME_7=0;sprites.agc;0;9
-FILE_NAME_8=0;scenemanager.agc;0;8
-FILE_NAME_9=0;enemy.agc;596;4
-FILE_NAME_10=0;bullet.agc;0;2
 
 [project]
 description=

@@ -9,8 +9,9 @@ EnemyInit:
 return
 
 EnemyUpdate:
-	/*(curTime#)
-	print(curWave)
+	curTime# = curTime# - 0.000035
+	//print(curTime#)
+	/*print(curWave)
 	print(entities.length)*/
 	for q = 1 to entities.length
 		if (entities[q].spawned = 1 and entities[q].tag = "enemy")
@@ -71,7 +72,7 @@ EnemyUpdate:
 	else
 		enemySpawn# = timer()
 	endif
-	if (nextWave = 0 and curWave > 0)
+	/*if (nextWave = 0 and curWave > 0)
 		if (timer()-waveTimer# > 1 * curWave)
 			nextWave = 1
 			waveTimer# = timer()
@@ -85,8 +86,7 @@ EnemyUpdate:
 		endif
 	else
 		waveTimer# = timer()
-	endif
-	
+	endif*/
 return
 
 function CreateEnemy(color as Color, sprite)

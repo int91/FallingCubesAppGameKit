@@ -4,6 +4,7 @@
 #include "player.agc"
 #include "enemy.agc"
 #include "bullet.agc"
+#include "ammobox.agc"
 
 SceneManagerInit:
 	SceneID = 0
@@ -31,12 +32,15 @@ SceneManagerUpdate:
 		gosub EnemyUpdate
 		gosub DrawEntities
 		gosub BulletUpdate
+		gosub AmmoboxUpdate
+		gosub IngameGuiUpdate
 		if (playerLives < 1)
 			for i = 1 to entities.length 
 				DeleteSprite(entities[i].sprite)
 				entities.remove(i)
 			next i
 			if entities.length = 0
+				clearGameGui()
 				SceneID = 2
 				ScenesInit = 0
 			endif
@@ -95,6 +99,28 @@ LostScreenInit:
 	SetTextPosition(15, 512, 194)
 return
 
+IngameGuiInit:
+	CreateText(16, "Lives: " + str(playerLives))
+	CreateText(17, "Ammo: " + str(ammo))
+	SetTextSize(16, 36)
+	SetTextSize(17, 36)
+	
+	SetTextAlignment(16, 0)
+	SetTextAlignment(17, 0)
+	
+	SetTextPosition(16, 10, 10)
+	SetTextPosition(17, 10, 40)
+return
+IngameGuiUpdate:
+	SetTextString(16, "Lives: " + str(playerLives))
+	SetTextString(17, "Ammo: " + str(ammo))
+return
+
+function clearGameGui()
+	DeleteText(16)
+	DeleteText(17)
+endfunction
+
 CheckScene:
 	if (SceneID = 0)
 		gosub MainMenuInit
@@ -103,6 +129,8 @@ CheckScene:
 		gosub EntityInit
 		gosub PlayerInit
 		gosub EnemyInit
+		gosub AmmoboxInit
+		gosub IngameGuiInit
 	endif
 	if (SceneID = 2)
 		gosub LostScreenInit
