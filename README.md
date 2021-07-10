@@ -11,6 +11,8 @@
 
  Basically to explain the game play it's just, enemy spawn, enemy fall, player moves to avoid enemies, when player contacts enemies, player dies.
  
+ Also this game has no deltaTime but it's super simple to implement, I just didn't implement it since I figured I'd be the only one playing the game anyway. So have fun.
+ 
  This project was remade in:
  python3 (lost source)
  lua + love2D
