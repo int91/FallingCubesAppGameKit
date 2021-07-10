@@ -13,6 +13,8 @@
  
  Also this game has no deltaTime but it's super simple to implement, I just didn't implement it since I figured I'd be the only one playing the game anyway. So have fun.
  
+ NOTE: In the source code there is two files with "buildPlaceholder" or something similar. These files ARE NOT part of the game. They were part of a building system I was making to learn BASIC and App Game Kit
+ 
  This project was remade in:
  python3 (lost source)
  lua + love2D
