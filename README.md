@@ -3,7 +3,7 @@
  
  Falling Cubes was written in BASIC using The Game Creator's "App Game Kit" framework.
  
- NOTE: Github says this project was written in ASSEMBLY. It was not written in ASSEMBLY, but since github doesn't have App Game Kit files in their language database it doesn't work and defaulted to ASSEMBLY.
+ NOTE: Github says this project was written in ASSEMBLY. It was not written in ASSEMBLY, but since github doesn't have App Game Kit files in their language database so it doesn't work and defaulted to ASSEMBLY.
  
  Falling Cubes uses its own ecs-similar code base. The ecs-similar system is similar because each object type has its own update, create, and draw function(s).
 
