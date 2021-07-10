@@ -8,7 +8,7 @@
  Falling Cubes uses its own ecs-similar code base. The ecs-similar system is alike because each object type has its own update, create, and draw function(s).
 
  The object system works by declaring an array that stores a type, entity. Then each object (player, enemy, etc.) is defined as an entity and fed into that array.
- Variables such as PlayerLives, and PlayeID are stored in global variables to prevent re-typing "player." or entities[player.Id].thisvar].
+ Variables such as PlayerLives, and PlayerID are stored in global variables to prevent re-typing "player." or entities[player.Id].thisvar].
 
  In layman's terms the player dodges cubes that fall from the air and if the player gets hit by a cube too many times they die.
  
