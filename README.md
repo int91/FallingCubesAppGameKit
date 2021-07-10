@@ -1,4 +1,4 @@
-# FallingCubesSrc
+# Falling Cubes Written in App Game Kit
  Source Code for Falling Cubes
  
  Falling Cubes was written in BASIC using The Game Creator's "App Game Kit" framework.
