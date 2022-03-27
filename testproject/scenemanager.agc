@@ -9,16 +9,16 @@
 SceneManagerInit:
 	SceneID = 0
 	ScenesInit = 0
-	global debugMode = 0
 	gosub CheckScene
 return
 
 SceneManagerUpdate:
+
 	if (ScenesInit = 0)
 		gosub CheckScene
 	endif
 	if (SceneID = 0 and ScenesInit = 1)
-		gosub DebugHandler
+		DebugHandler()
 		if (GetRawKeyPressed(KEY_SPACE))
 			SceneID = 1
 			ScenesInit = 0
@@ -27,27 +27,26 @@ SceneManagerUpdate:
 		endif
 	endif
 	if (SceneID = 1 and ScenesInit = 1)
-		gosub DebugHandler
+		DebugHandler()
 		gosub PlayerUpdate
 		gosub EnemyUpdate
-		gosub DrawEntities
 		gosub BulletUpdate
 		gosub AmmoboxUpdate
+		gosub DrawEntities
 		gosub IngameGuiUpdate
 		if (playerLives < 1)
-			for i = 1 to entities.length 
-				DeleteSprite(entities[i].sprite)
-				entities.remove(i)
+			for i = 0 to entities.length 
+				DestroyEntity(i)
 			next i
 			if entities.length = 0
-				clearGameGui()
+				ClearGameGui()
 				SceneID = 2
 				ScenesInit = 0
 			endif
 		endif
 	endif
 	if (SceneID = 2 and ScenesInit = 1)
-		gosub DebugHandler
+		DebugHandler()
 		if (GetRawKeyPressed(KEY_SPACE))
 			SceneID = 0
 			ScenesInit = 0
@@ -116,7 +115,7 @@ IngameGuiUpdate:
 	SetTextString(17, "Ammo: " + str(ammo))
 return
 
-function clearGameGui()
+function ClearGameGui()
 	DeleteText(16)
 	DeleteText(17)
 endfunction

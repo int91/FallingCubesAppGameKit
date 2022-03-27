@@ -1,0 +1,2 @@
+
+global m as mouse

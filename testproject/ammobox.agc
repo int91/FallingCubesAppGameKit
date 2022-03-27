@@ -3,15 +3,14 @@ function CreateCrate(color as Color, sprite)
 	ac as entity
 	ac.sizeX = 8
 	ac.sizeY = 16
-	ac.x = round(random(ac.sizeX, 1024 - ac.sizeX))
-	ac.y = round(random(-56, 0))
+	ac.pos.x = round(random(ac.sizeX, 1024 - ac.sizeX))
+	ac.pos.y = round(random(-56, 0))
 	ac.spawned = 1
 	ac.tag = "ammopickup"
 	ac.sprite = CreateSprite(sprite)
 	ac.color = color
-	//ent.insert(ac)
 	ac.id = entities.length + 1
-	SetSpritePosition(ac.sprite, ac.x, ac.y)
+	SetSpritePosition(ac.sprite, ac.pos.x, ac.pos.y)
 	SetSpriteColor(ac.sprite, ac.color.r, ac.color.g, ac.color.b, 255)
 endfunction ac
 
@@ -37,17 +36,15 @@ AmmoboxUpdate:
 	if (GetRawKeyPressed(KEY_3))
 		entities.insert(CreateCrate(white, placeHolderAmmoBoxSprite))
 	endif
-	for q = 1 to entities.length
+	for q = 0 to entities.length
 		if (entities[q].spawned = 1 and entities[q].tag = "ammopickup")
-			entities[q].y = entities[q].y + 10
-			SetSpritePosition(entities[q].sprite, entities[q].x, entities[q].y)
-			SetSpriteAngle(entities[q].sprite, 180)
+			entities[q].pos.y = entities[q].pos.y + (600 * GetFrameTime())
 			if (GetSpriteCollision(entities[q].sprite, entities[playerID].sprite))
 				entities[q].spawned = 0
 				ammo = ammo + 3
 				score = score + 10
 			endif
-			if (entities[q].y > windowSizeY)
+			if (entities[q].pos.y > windowSizeY)
 				entities[q].spawned = 0
 			endif
 		elseif (entities[q].spawned = 0 and entities[q].tag = "ammopickup")

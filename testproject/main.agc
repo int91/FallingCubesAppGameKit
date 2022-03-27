@@ -22,6 +22,8 @@ SetSyncRate( 60, 0 )
 SetScissor( 0,0,0,0 ) // use the maximum available screen space, no black borders
 UseNewDefaultFonts( 1 ) // since version 2.0.22 we can use nicer default fonts
 
+#insert "globals.agc"
+
 #include "keys.agc"
 #include "sprites.agc"
 #include "colors.agc"
@@ -40,7 +42,7 @@ do
     Sync()
 loop
 
-DebugHandler:
+function DebugHandler()
 	if (GetRawKeyPressed(KEY_F9))
 		debugMode = not debugMode
 	endif
@@ -51,4 +53,4 @@ DebugHandler:
 			end
 		endif
 	endif
-return
+endfunction

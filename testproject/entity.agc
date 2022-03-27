@@ -1,14 +1,22 @@
 
+type Vector2
+	x as integer
+	y as integer
+endtype
+
 type entity
-		x as integer
-		y as integer
+		pos as Vector2
 		sizeX as integer
 		sizeY as integer
-		spawned as integer
+		angle as float
+		
+		
 		tag as string
 		id as integer
 		sprite as integer
 		color as Color
+		
+		spawned as integer
 endtype
 
 
@@ -20,18 +28,16 @@ EntityInit:
 	next i*/
 return
 
-function DrawEntity(x, y, sprite, color as Color, fill)
-	SetSpritePosition(sprite, x, y)
-	SetSpriteColor(sprite, color.r, color.g, color.b, 255)
-	//DrawBox(x, y, x + 32, y + 32, color, color, color, color, fill)
+function DrawEntity(e as entity)
+	SetSpritePosition(e.sprite, e.pos.x, e.pos.y)
+	SetSpriteColor(e.sprite, e.color.r, e.color.g, e.color.b, 255)
+	SetSpriteAngle(e.sprite, e.angle)
 endfunction
 
 DrawEntities:
-	for i = 1 to entities.length
+	for i = 0 to entities.length
 		if (entities[i].spawned = 1)
-			SetSpritePosition(entities[i].sprite, entities[i].x, entities[i].y)
-			SetSpriteColor(entities[i].sprite, entities[i].color.r, entities[i].color.g, entities[i].color.b, 255)
-			//DrawEntity(entities[i].x, entities[i].y, MakeColor(cyan.r, cyan.g, cyan.b), 1)
+			DrawEntity(entities[i])
 		endif
 	next i
 return
@@ -41,15 +47,15 @@ function CreateEntity(xPos, yPos, sizeX, sizeY, sprite, tag as string, id as int
 		entityToInsert as entity
 		entityToInsert.sizeX = sizeX
 		entityToInsert.sizeY = sizeY
-		entityToInsert.x = xPos
-		entityToInsert.y = yPos
+		entityToInsert.pos.x = xPos
+		entityToInsert.pos.y = yPos
 		entityToInsert.spawned = 1
 		entityToInsert.tag = tag
 		entityToInsert.id = id
 		entityToInsert.sprite = CreateSprite(sprite)
 		entityToInsert.color = Color
 		SetSpriteDepth(entityToInsert.sprite, 11)
-		SetSpritePosition(entityToInsert.sprite, entityToInsert.x, entityToInsert.y)
+		SetSpritePosition(entityToInsert.sprite, entityToInsert.pos.x, entityToInsert.pos.y)
 		entities.insert(entityToInsert)
 	endif
 endfunction
@@ -59,16 +65,11 @@ function DestroyEntity(entityIndex as integer)
 	entities.remove(entityIndex)
 endfunction
 
-//Old Create Entity Function (Don't wanna delete for sake of possibly fixing bugs in the future
-/*for i = 1 to maxEntities
-	if (entities[i].spawned = 0)
-		entities[i].sizeX = sizeX
-		entities[i].sizeY = sizeY
-		entities[i].x = xPos
-		entities[i].y = yPos
-		entities[i].spawned = 1
-		entities[i].tag = tag
-		entities[i].id = id
-		exit
-	endif
-	next i*/
+function GetEntity(index as integer)
+	ent as entity
+	ent = entities[index]
+endfunction ent
+
+function SetEntity(index as integer, e as entity)
+	entities[index] = e
+endfunction

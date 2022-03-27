@@ -13,16 +13,14 @@ EnemyUpdate:
 	//print(curTime#)
 	/*print(curWave)
 	print(entities.length)*/
-	for q = 1 to entities.length
+	for q = 0 to entities.length
 		if (entities[q].spawned = 1 and entities[q].tag = "enemy")
-			entities[q].y = entities[q].y + 10
-			SetSpritePosition(entities[q].sprite, entities[q].x, entities[q].y)
-			SetSpriteAngle(entities[q].sprite, 180)
+			entities[q].pos.y = entities[q].pos.y + (600 * GetFrameTime())
 			if (GetSpriteCollision(entities[q].sprite, entities[playerID].sprite))
 				playerLives = playerLives - 1
 				entities[q].spawned = 0
 			endif
-			if (entities[q].y > windowSizeY)
+			if (entities[q].pos.y > windowSizeY)
 				entities[q].spawned = 0
 				select curWave
 					case 1:
@@ -66,7 +64,7 @@ EnemyUpdate:
 		if (timer()-enemySpawn# > curTime#)
 			canSpawn = 1
 			enemySpawn# = timer()
-			CreateEnemy(red, placeHolderBoxSprite)
+			entities.insert(CreateEnemy(red, placeHolderBoxSprite))
 			canSpawn = 0
 		endif
 	else
@@ -93,17 +91,17 @@ function CreateEnemy(color as Color, sprite)
 	enC as entity
 	enC.sizeX = 32
 	enC.sizeY = 32
-	enC.x = round(random(enC.sizeX, 1024 - enC.sizeX))
-	enC.y = round(random(-64, 0))
+	enC.pos.x = round(random(enC.sizeX, 1024 - enC.sizeX))
+	enC.pos.y = round(random(-64, 0))
 	enC.spawned = 1
 	enC.tag = "enemy"
 	enC.sprite = CreateSprite(sprite)
 	enC.color = color
-	entities.insert(enC)
-	enC.id = entities.length
-	SetSpritePosition(enC.sprite, enC.x, enC.y)
+	enC.id = entities.length + 1
+	enC.angle = 180
+	SetSpritePosition(enC.sprite, enC.pos.x, enC.pos.y)
 	SetSpriteColor(enC.sprite, enC.color.r, enC.color.g, enC.color.b, 255)
-endfunction
+endfunction enC
 
 function DestroyEnemy(enemyIndex as integer)
 	DestroyEntity(enemyIndex)

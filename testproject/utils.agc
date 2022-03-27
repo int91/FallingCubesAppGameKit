@@ -4,8 +4,6 @@ type mouse
 	y as float
 endtype
 
-global m as mouse
-
 function SnapToGrid(value as integer, gridSize as integer)
 	snapTo = floor(value / gridSize) * gridSize
 	toSnapTo = Round(snapTo)

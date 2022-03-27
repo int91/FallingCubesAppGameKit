@@ -60,8 +60,20 @@ FILE_9=scenemanager.agc;-1
 FILE_10=enemy.agc;-1
 FILE_11=bullet.agc;-1
 FILE_12=ammobox.agc;-1
+FILE_13=globals.agc;-1
+FILE_14=globals.agc;-1
 
 [files]
+FILE_NAME_0=0;main.agc;1220;0
+FILE_NAME_1=0;entity.agc;18;4
+FILE_NAME_2=0;utils.agc;51;7
+FILE_NAME_3=0;player.agc;1935;5
+FILE_NAME_4=0;scenemanager.agc;331;6
+FILE_NAME_5=0;enemy.agc;557;3
+FILE_NAME_6=0;bullet.agc;1115;2
+FILE_NAME_7=0;ammobox.agc;1465;1
+FILE_NAME_8=1;globals.agc;0;8
+FILE_NAME_9=1;globals.agc;0;8
 
 [project]
 description=
